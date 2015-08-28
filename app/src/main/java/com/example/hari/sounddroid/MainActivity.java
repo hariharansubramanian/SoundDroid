@@ -1,12 +1,12 @@
 package com.example.hari.sounddroid;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.google.gson.Gson;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,14 +15,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        JSONObject jsonObject = null;
-        try{//take json string and return a JSONobject
-            jsonObject=new JSONObject(trackJSON());
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        //pass jsonObject and receive value of key 'title' as track.setTitle(jsonobject.getString('title')
-        Track track=Track.parseJSON(jsonObject);
+        Gson gson = new Gson();
+        Track track=gson.fromJson(trackJSON(),Track.class);
+        Log.d("Gson", "Track title is : " + track.getTitle());
+
 
     }
 
