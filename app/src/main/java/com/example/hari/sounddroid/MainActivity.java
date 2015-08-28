@@ -17,6 +17,9 @@ public class MainActivity extends AppCompatActivity {
 
         Gson gson = new Gson();
         Track track=gson.fromJson(trackJSON(),Track.class);
+        /*automatically maps Json string members to Track members
+        Can alternatively be done by using @SerializedName("title"),@SerializedName("stream_url"),
+        @SerializedName("id")*/
         Log.d("Gson", "Track title is : " + track.getTitle());
 
 

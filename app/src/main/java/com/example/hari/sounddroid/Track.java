@@ -1,11 +1,16 @@
 package com.example.hari.sounddroid;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by Nicky on 8/24/2015.
  */
 public class Track {
+    @SerializedName("title") //Tells Gson to map private member title to the 'title' in Json string
     private String title;
+    @SerializedName("stream_url") //streamURL to json member 'stream_url'
     private String streamURL;
+    @SerializedName("id")  //id to json member 'id'
     private int id;
 
     public String getTitle() {
@@ -32,16 +37,5 @@ public class Track {
         this.id = id;
     }
 
-//    public static Track parseJSON(JSONObject jsonObject){
-//        Track t=new Track();
-//        try {
-//            t.setTitle(jsonObject.getString("title"));
-//            Log.d("Track details","Track title is"+t.getTitle());
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//        return t;
-//
-//    }
 }
 
