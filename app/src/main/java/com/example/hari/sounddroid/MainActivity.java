@@ -5,6 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.List;
+
+import retrofit.RestAdapter;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,6 +17,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        RestAdapter restAdapter=new RestAdapter.Builder()
+                .setEndpoint("http://api.soundcloud.com")
+                .build();
+        SoundCloudService service=restAdapter.create(SoundCloudService.class);
+        List<Track> tracks=service.searchSongs("dark horse");
     }
 
     @Override
